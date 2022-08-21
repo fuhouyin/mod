@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/*旋转*/
+.cicle {
+    width: 25rem;
+    height: 25rem;
+    background: url(img/circleyuan.png) no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    top: 15%;
+    left: 39%;
+    transform-style: preserve-3d;
+    /*transform: translateX(-50%) rotateX(75deg);*/
+    animation: rotate 5s linear infinite;
+}
+
+.cicle-1 {
+    width: 26.5rem;
+    height: 26.5rem;
+    background: url(img/circleyuan1.png) no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    top: 14%;
+    left: 38.4%;
+    transform-style: preserve-3d;
+    /*transform: translateX(-50%) rotateX(75deg);*/
+    animation: rotate 5s linear infinite;
+}
+
+.cicle2 {
+    width: 50rem;
+    height: 40rem;
+    background: url(img/circle2.png) no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    top: 5%;
+    left: 28%;
+    /*transform-style: preserve-3d;*/
+    /*transform: translateX(-50%) rotateX(55deg);*/
+    /*animation: rotate2 5s linear infinite;*/
+}
+
+.cicle3-1 {
+    width: 45rem;
+    height: 45rem;
+    background: url(img/circle3-1.png) no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    top: 40.2%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: translateX(-50%) rotateX(75deg);
+    animation: rotate3 5s linear infinite;
+}
+.cicle3-2 {
+    width: 45rem;
+    height: 45rem;
+    background: url(img/circle3-2.png) no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    top: 43%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: translateX(-50%) rotateX(75deg);
+    animation: rotate3 6s linear infinite;
+}
+.cicle3-3 {
+    width: 45rem;
+    height: 45rem;
+    background: url(img/circle3-3.png) no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: translateX(-50%) rotateX(75deg);
+    animation: rotate3 9s linear infinite;
+}
+.cicle3-4 {
+    width: 40rem;
+    height: 40rem;
+    background: url(img/circle3-4.png) no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    top: 54%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: translateX(-50%) rotateX(75deg);
+    animation: rotate3 5s linear infinite;
+}
+.cicle3-5 {
+    width: 45rem;
+    height: 45rem;
+    background: url(img/circle3-5.png) no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: translateX(-50%) rotateX(75deg);
+    animation: rotate3 9s linear infinite;
+}
+
+.cicle4 {
+    width: 15rem;
+    height: 15rem;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform-style: preserve-3d;
+    background: url(img/53gqright.png) no-repeat center;
+    background-size: 100%;
+    transform: translateX(-50%) rotateX(75deg);
+    animation: rotate3 2s linear infinite;
+}
+.cicle5 {
+    width: 15rem;
+    height: 15rem;
+    position: absolute;
+    top: 48%;
+    left: 50%;
+    transform-style: preserve-3d;
+    background: url(img/53gqleft.png) no-repeat center;
+    background-size: 100%;
+    transform: translateX(-50%) rotateX(75deg);
+    animation: rotate4 2s linear infinite;
+}
+.cicle6 {
+    width: 12rem;
+    height: 12rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    background: url(img/535gqbottomright.png) no-repeat center;
+    background-size: 100%;
+    transform: translateX(-50%) rotateX(75deg);
+    animation: rotate3 2s linear infinite;
+}
+.cicle7 {
+    width: 12rem;
+    height: 12rem;
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform-style: preserve-3d;
+    background: url(img/53gqbottomleft.png) no-repeat center;
+    background-size: 100%;
+    transform: translateX(-50%) rotateX(75deg);
+    animation: rotate4 2s linear infinite;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotate2 {
+    0% {
+        transform: translateX(-50%) rotateX(55deg) rotateZ(0);
+    }
+    100% {
+        transform: translateX(-50%) rotateX(55deg) rotateZ(360deg);
+    }
+}
+@keyframes rotate3 {
+    0% {
+        transform: translateX(-50%) rotateX(75deg) rotateZ(0);
+    }
+    100% {
+        transform: translateX(-50%) rotateX(75deg) rotateZ(360deg);
+    }
+}
+@keyframes rotate4 {
+    0% {
+        transform: translateX(-50%) rotateX(75deg) rotateZ(0);
+    }
+    100% {
+        transform: translateX(-50%) rotateX(75deg) rotateZ(-360deg);
+    }
+}
+#id1,#id2,#id3,#id4,#id5{
+    animation: heartbeat 1.25s infinite;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: scale(1)
+    }
+    10% {
+        transform: scale(1.20)
+    }
+    50% {
+        transform: scale(1.25)
+    }
+    100% {
+        transform: scale(1)
+    }
+}
+</style>
+</head>
+<body style="background-image: url('img/bg.png');background-repeat: no-repeat;background-size: cover;">
+<div>
+	<div class="cicle"></div>
+	<div class="cicle-1"></div>
+	<div class="cicle2"></div>
+	
+	<div id="id1" style="background-image: url('img/qcyd.png');background-repeat: no-repeat;background-size: cover;height: 86px;width: 80px;margin-left: 641px;margin-top:106px"></div>
+	<div id="id2" style="background-image: url('img/qwfz.png');background-repeat: no-repeat;background-size: cover;height: 86px;width: 80px;margin-left: 1157px;margin-top: -8px"></div>
+	<div id="id3" style="background-image: url('img/qbzc.png');background-repeat: no-repeat;background-size: cover;height: 86px;width: 80px;margin-left: 631px;margin-top: 63px"></div>
+	<div id="id4" style="background-image: url('img/lksd.png');background-repeat: no-repeat;background-size: cover;height: 86px;width: 80px;margin-left: 1208px;margin-top: -17px"></div>
+	<div id="id5" style="background-image: url('img/qlnd.png');background-repeat: no-repeat;background-size: cover;height: 86px;width: 80px;margin-left: 997px;margin-top: -40px"></div>
+			
+	
+	<div class="cicle3-1"></div>
+	<div class="cicle3-2"></div>
+	<div class="cicle3-3"></div>
+	<div class="cicle3-4"></div>
+	<div class="cicle3-5"></div>
+	<div class="cicle4"></div>
+	<div class="cicle5"></div>
+	<div class="cicle6"></div>
+	<div class="cicle7"></div>
+</div>
+</body>
+</html>
