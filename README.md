@@ -1,2 +1,11 @@
+### Mod 自己练习的demo
+
 ### 可视化大屏组件
-![image.png](https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aaf0bc4ca40f44f4a2054f4e8d5260b7~tplv-k3u1fbpfcp-watermark.image?)
+    visualization
+
+<img src=https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aaf0bc4ca40f44f4a2054f4e8d5260b7~tplv-k3u1fbpfcp-watermark.image width=400 height=300 />
+
+### 时间工具类
+    DateTimeUtils
+        daysBetween 计算两个日期之间相差的天数
+        overdueAdvent 计算临期/超期天数
