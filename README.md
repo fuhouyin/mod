@@ -12,7 +12,6 @@
         
 ### wx消息推送Mod
     wxMod
-        utils.WxUtils
         wxMod.wxRequestController
         wxMod.wxSendMsgController
     前提：需要提前准备一个微信公众号，个人订阅号无效，可申请注册微信测试号

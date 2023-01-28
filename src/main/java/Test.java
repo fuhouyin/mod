@@ -1,5 +1,6 @@
 import Pojo.TimeOverdueAdventPojo;
 import utils.DateTimeUtils;
+import wxMod.wxSendMsgController;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,8 +9,9 @@ import java.util.Date;
 public class Test {
 
     public static void main(String[] args) throws Exception{
-        daysBetweenTest();
-        overdueAdventTest();
+        //daysBetweenTest();
+        //overdueAdventTest();
+        //wxTest();
     }
 
     /**
@@ -32,5 +34,13 @@ public class Test {
 
         TimeOverdueAdventPojo timeOverdueAdventPojo = DateTimeUtils.overdueAdvent(endTime,finishTime);
         System.out.println(timeOverdueAdventPojo);
+    }
+
+    /**
+     * wxMod 使用演示
+     */
+    public static void wxTest(){
+        wxSendMsgController wxSendMsgController = new wxSendMsgController();
+        wxSendMsgController.sendMsgMod("标题", "内容");
     }
 }

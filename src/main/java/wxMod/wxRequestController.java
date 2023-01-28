@@ -37,7 +37,7 @@ public class wxRequestController {
     }
 
     private static boolean checkSignature(String signature,String timestamp,String nonce){
-            String token = "fuhouyin";
+            String token = ""; //在公众号上设定的值
 
             String[] str = new String[]{token,timestamp,nonce};
             //排序
