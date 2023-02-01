@@ -1,6 +1,10 @@
 import Pojo.TimeOverdueAdventPojo;
 import mail.Mail;
+import org.springframework.web.multipart.MultipartFile;
+import utils.Base64ToMultipartFile;
+import utils.CryptoUtils;
 import utils.DateTimeUtils;
+import utils.FileUtils;
 import wxMod.wxSendMsgController;
 
 import java.text.ParseException;
@@ -14,6 +18,7 @@ public class Test {
         //overdueAdventTest();
         //wxTest();
         //mailTest();
+        fileEncDecTest();
     }
 
     /**
@@ -52,5 +57,25 @@ public class Test {
         Mail.sendMail("发件地址","密钥","收件地址","标题", "内容");
     }
 
+    /**
+     *
+     */
+    public static void fileEncDecTest() throws Exception{
 
+        String filePath = "D:\\file.txt";
+        String encFilepath = "D:\\newFile111.txt";
+        //文件加密
+        String base64 = FileUtils.fileToBase64(filePath);
+        String enc = CryptoUtils.encryptAESPkcs7(base64);
+        String suffixEnc = FileUtils.suffix(filePath.substring(filePath.lastIndexOf(".") + 1))+enc;
+        MultipartFile encMf = Base64ToMultipartFile.base64ToMultipart(suffixEnc);
+        assert encMf != null;
+        FileUtils.saveFile(encFilepath,encMf);
+        //文件解密
+        String encBase64 = FileUtils.fileToBase64(encFilepath);
+        String decBase64 = CryptoUtils.decryptAESPkcs7(encBase64.split(",")[1]);
+        MultipartFile decMf = Base64ToMultipartFile.base64ToMultipart(decBase64);
+        assert decMf != null;
+        FileUtils.saveFile(encFilepath, decMf);
+    }
 }
