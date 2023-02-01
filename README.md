@@ -16,3 +16,16 @@
         wxMod.wxSendMsgController
     前提：需要提前准备一个微信公众号，个人订阅号无效，可申请注册微信测试号
     
+### 邮件发送工具
+    mail
+    
+### 加密工具
+    CryptoUtils
+    字符串加密/解密 encryptAESPkcs7/decryptAESPkcs7
+    
+### 文件工具
+    FileUtils 
+        suffix 获取base64头
+        fileToBase64 file转base64
+        saveFile MultipartFile保存本地
+    Base64ToMultipartFile base64转MultipartFile
