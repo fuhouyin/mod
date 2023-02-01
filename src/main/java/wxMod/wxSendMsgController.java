@@ -9,6 +9,9 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author fuhouyin
+ */
 @RestController
 @RequestMapping("/wxSendMsg")
 public class wxSendMsgController {
@@ -20,8 +23,13 @@ public class wxSendMsgController {
     private static String TEMP_URL = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=";
     private static String MSGID = ""; //消息模板
 
+    /**
+     * 消息推送示例，参数内容根据实际更改
+     * @param keyword1 参数一
+     * @param keyword2 参数二
+     */
     @PostMapping("/sendMsgMod")
-    public void sendMsgMod(String keyword1,String keyword2){
+    public static void sendMsgMod(String keyword1, String keyword2){
         String openid = ""; //openid
         String access_token = getAccessToken();
         String url = TEMP_URL+access_token;
