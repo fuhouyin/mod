@@ -1,6 +1,6 @@
 package utils;
 
-import Pojo.TimeOverdueAdventPojo;
+import lombok.Data;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
@@ -94,5 +94,13 @@ public class DateTimeUtils {
         }
 
         return timeOverdueAdventPojo;
+    }
+
+    @Data
+    public static class TimeOverdueAdventPojo {
+
+        private int days;
+        private byte flag; //未逾期 0 逾期 1
+        private String oaFlag; //临期 advent 逾期 overdue
     }
 }

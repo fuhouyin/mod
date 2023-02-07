@@ -1,4 +1,3 @@
-import Pojo.TimeOverdueAdventPojo;
 import mail.Mail;
 import org.springframework.web.multipart.MultipartFile;
 import utils.Base64ToMultipartFile;
@@ -7,7 +6,6 @@ import utils.DateTimeUtils;
 import utils.FileUtils;
 import wxMod.wxSendMsgController;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -18,7 +16,7 @@ public class Test {
         //overdueAdventTest();
         //wxTest();
         //mailTest();
-        fileEncDecTest();
+        //fileEncDecTest();
     }
 
     /**
@@ -39,7 +37,7 @@ public class Test {
         Date endTime = sdf.parse("2022-10-12 10:07:49"); //截至日期
         Date finishTime = null; //未完成
 
-        TimeOverdueAdventPojo timeOverdueAdventPojo = DateTimeUtils.overdueAdvent(endTime,finishTime);
+        DateTimeUtils.TimeOverdueAdventPojo timeOverdueAdventPojo = DateTimeUtils.overdueAdvent(endTime,finishTime);
         System.out.println(timeOverdueAdventPojo);
     }
 
@@ -58,12 +56,12 @@ public class Test {
     }
 
     /**
-     *
+     * 文件加密/解密
      */
     public static void fileEncDecTest() throws Exception{
 
         String filePath = "D:\\file.txt";
-        String encFilepath = "D:\\newFile111.txt";
+        String encFilepath = "D:\\newFile.txt";
         //文件加密
         String base64 = FileUtils.fileToBase64(filePath);
         String enc = CryptoUtils.encryptAESPkcs7(base64);

@@ -1,6 +1,6 @@
 package Demo;
 
-import Pojo.UserSort;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -63,5 +63,16 @@ public class userSortDemo {
         userSortList.add(userSort4);
 
         return userSortList;
+    }
+
+    @Data
+    public static class UserSort {
+
+        private String userName; //用户名
+        private String year; //年度
+        private String quarter; //季度
+        private BigDecimal score; //分数
+        private String yearQuarter; //年度季度
+        private Integer sort; //排名
     }
 }
