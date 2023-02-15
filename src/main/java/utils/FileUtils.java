@@ -35,6 +35,7 @@ public class FileUtils {
             case "svg":  strSuffix = "data:image/svg+xml;base64,";break;
             case "ico":  strSuffix = "data:image/x-icon;base64,";break;
             case "bmp":  strSuffix = "data:image/bmp;base64,";break;
+            default: strSuffix = "data:image/bmp;base64,";break;
         }
         return strSuffix;
     }
