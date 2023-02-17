@@ -4,10 +4,13 @@ import utils.Base64ToMultipartFile;
 import utils.CryptoUtils;
 import utils.DateTimeUtils;
 import utils.FileUtils;
+import utils.page.PageHelper;
+import utils.page.PageResp;
 import wxMod.wxSendMsgController;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 public class Test {
 
@@ -75,5 +78,23 @@ public class Test {
         MultipartFile decMf = Base64ToMultipartFile.base64ToMultipart(decBase64);
         assert decMf != null;
         FileUtils.saveFile(encFilepath, decMf);
+    }
+
+    /**
+     * 分页方法测试
+     * @param getPageNum 页码
+     * @param getPageSize 数量
+     * @param list 集合
+     * @return pageResp
+     */
+    public PageResp<String> PageTest(int getPageNum, int getPageSize, List<String> list){
+        PageResp<String> pageResp = new PageResp<String>();
+        PageHelper pageHelper = new PageHelper(getPageNum, getPageSize);
+        pageHelper.setTotalRowCount(list.size());
+        //limit(pageHelper.offset(),pageHelper.getPageSize());
+        //List<String> list = query.fetchInto(String.class);
+        pageResp.setTotalCount(pageHelper.getTotalRowCount());
+        pageResp.setList(list);
+        return pageResp;
     }
 }
