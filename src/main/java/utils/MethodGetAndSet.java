@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 /**
  * @author fuhouyin
  * @time 2023/2/1 15:10
+ * 根据实体类属性获取getAndSet方法
  */
 public class MethodGetAndSet {
 
