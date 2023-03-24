@@ -8,7 +8,11 @@ import utils.page.PageHelper;
 import utils.page.PageResp;
 import wxMod.wxSendMsgController;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
+import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -78,6 +82,7 @@ public class Test {
         MultipartFile decMf = Base64ToMultipartFile.base64ToMultipart(decBase64);
         assert decMf != null;
         FileUtils.saveFile(encFilepath, decMf);
+        //Files.write(Paths.get(paths), Base64.getDecoder().decode(dec), StandardOpenOption.CREATE);
     }
 
     /**
