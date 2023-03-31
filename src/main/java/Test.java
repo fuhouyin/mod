@@ -1,13 +1,14 @@
 import mail.Mail;
+import org.apache.commons.io.IOUtils;
 import org.springframework.web.multipart.MultipartFile;
-import utils.Base64ToMultipartFile;
-import utils.CryptoUtils;
-import utils.DateTimeUtils;
-import utils.FileUtils;
+import utils.*;
 import utils.page.PageHelper;
 import utils.page.PageResp;
+import utils.response.VoResult;
 import wxMod.wxSendMsgController;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -24,6 +25,7 @@ public class Test {
         //wxTest();
         //mailTest();
         //fileEncDecTest();
+        //fileDownTest();
     }
 
     /**
@@ -86,6 +88,16 @@ public class Test {
     }
 
     /**
+     * 获取网络文件并下载
+     */
+    public static void fileDownTest() throws Exception{
+        File file = FileUtils.getFile("https://www.baidu.com/a.jpg");
+        FileInputStream inputStream = new FileInputStream(file);
+        MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", IOUtils.toByteArray(inputStream));
+        multipartFile.transferTo(Paths.get("D:\\a.jpg"));
+    }
+
+    /**
      * 分页方法测试
      * @param getPageNum 页码
      * @param getPageSize 数量
@@ -101,5 +113,15 @@ public class Test {
         pageResp.setTotalCount(pageHelper.getTotalRowCount());
         pageResp.setList(list);
         return pageResp;
+    }
+
+    /**
+     * 常用回显方法整合
+     * @return
+     */
+    public VoResult resultTest(){
+        return VoResult.success();
+        //return VoResult.success().add("key","value");
+        //return VoResult.errorParam("报错啦！！！");
     }
 }
