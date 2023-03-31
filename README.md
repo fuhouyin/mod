@@ -1,4 +1,5 @@
-### 个人学习的demo
+## 个人学习的demo
+#####相关示例请查看Test.java
 
 ### 可视化大屏组件
     visualization
@@ -6,7 +7,7 @@
 <img src=https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/aaf0bc4ca40f44f4a2054f4e8d5260b7~tplv-k3u1fbpfcp-watermark.image width=400 height=300 />
 
 ### 时间工具类
-    DateTimeUtils
+    utils.DateTimeUtils
         daysBetween 计算两个日期之间相差的天数
         overdueAdvent 计算临期/超期天数
         
@@ -17,15 +18,26 @@
     前提：需要提前准备一个微信公众号，个人订阅号无效，可申请注册微信测试号
     
 ### 邮件发送工具
-    mail
+    mail，由于依赖停止维护，请谨慎使用
     
 ### 加密工具
-    CryptoUtils
+    utils.CryptoUtils
     字符串加密/解密 encryptAESPkcs7/decryptAESPkcs7
     
 ### 文件工具
-    FileUtils 
+    utils.FileUtils 
         suffix 获取base64头
         fileToBase64 file转base64
         saveFile MultipartFile保存本地
+        getFile 网络文件转File
     Base64ToMultipartFile base64转MultipartFile
+    
+### 分页工具
+    utils.page.*,详情查看Test.PageTest();
+    utils.HandlePage 手动分页，可能有bug，待测试
+    
+### 回显方法
+    utils.response.VoResult
+    
+### 根据实体类属性获取getAndSet方法
+    utils.MethodGetAndSet 可能有bug，待测试
