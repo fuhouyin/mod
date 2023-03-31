@@ -16,9 +16,29 @@ public enum ResultEnums {
     private int code;
     private String message;
 
+    ResultEnums(){}
+
     ResultEnums(int code, String message) {
         this.code = code;
         this.message = message;
+    }
+
+    public static String valueOfCode(String code) {
+        for (ResultEnums obj : ResultEnums.values()) {
+            if (java.util.Objects.equals(obj.code, code)) {
+                return obj.message;
+            }
+        }
+        return null;
+    }
+
+    public static Number valueOfMessage(String message) {
+        for (ResultEnums obj : ResultEnums.values()) {
+            if (java.util.Objects.equals(obj.message, message)) {
+                return obj.code;
+            }
+        }
+        return null;
     }
 
     public String getMessage() {
