@@ -10,6 +10,7 @@ import java.util.Properties;
 /**
  * @author fuhouyin
  * @time 2023/1/28 14:13
+ * 由于依赖停止维护，请谨慎使用
  */
 public class Mail {
 
