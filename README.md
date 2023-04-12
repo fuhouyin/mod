@@ -41,3 +41,6 @@
     
 ### 根据实体类属性获取getAndSet方法
     utils.MethodGetAndSet 可能有bug，待测试
+    
+### redis工具
+    utils.redis.RedisCacheUtils
