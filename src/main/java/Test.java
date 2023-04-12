@@ -20,12 +20,13 @@ import java.util.List;
 public class Test {
 
     public static void main(String[] args) throws Exception{
-        //daysBetweenTest();
-        //overdueAdventTest();
-        //wxTest();
-        //mailTest();
-        //fileEncDecTest();
-        //fileDownTest();
+        daysBetweenTest();
+        overdueAdventTest();
+        wxTest();
+        mailTest();
+        fileEncDecTest();
+        fileDownTest();
+        resultTest();
     }
 
     /**
@@ -65,7 +66,7 @@ public class Test {
     }
 
     /**
-     * 文件加密/解密
+     * CryptoUtils 使用演示 文件加密/解密
      */
     public static void fileEncDecTest() throws Exception{
 
@@ -75,25 +76,26 @@ public class Test {
         String base64 = FileUtils.fileToBase64(filePath);
         String enc = CryptoUtils.encryptAESPkcs7(base64);
         String suffixEnc = FileUtils.suffix(filePath.substring(filePath.lastIndexOf(".") + 1))+enc;
-        MultipartFile encMf = Base64ToMultipartFile.base64ToMultipart(suffixEnc);
+        MultipartFile encMf = FileUtils.Base64ToMultipartFile.base64ToMultipart(suffixEnc);
         assert encMf != null;
         FileUtils.saveFile(encFilepath,encMf);
         //文件解密
         String encBase64 = FileUtils.fileToBase64(encFilepath);
         String decBase64 = CryptoUtils.decryptAESPkcs7(encBase64.split(",")[1]);
-        MultipartFile decMf = Base64ToMultipartFile.base64ToMultipart(decBase64);
+        MultipartFile decMf = FileUtils.Base64ToMultipartFile.base64ToMultipart(decBase64);
         assert decMf != null;
         FileUtils.saveFile(encFilepath, decMf);
+        //另一种保存方式
         //Files.write(Paths.get(paths), Base64.getDecoder().decode(dec), StandardOpenOption.CREATE);
     }
 
     /**
-     * 获取网络文件并下载
+     * FileUtils.getFile 使用演示 获取网络文件并下载
      */
     public static void fileDownTest() throws Exception{
         File file = FileUtils.getFile("https://www.baidu.com/a.jpg");
         FileInputStream inputStream = new FileInputStream(file);
-        MultipartFile multipartFile = new MockMultipartFile("file", file.getName(), "text/plain", IOUtils.toByteArray(inputStream));
+        MultipartFile multipartFile = new FileUtils.MockMultipartFile("file", file.getName(), "text/plain", IOUtils.toByteArray(inputStream));
         multipartFile.transferTo(Paths.get("D:\\a.jpg"));
     }
 
@@ -102,7 +104,7 @@ public class Test {
      * @param getPageNum 页码
      * @param getPageSize 数量
      * @param list 集合
-     * @return pageResp
+     * @return pageResp<T>
      */
     public PageResp<String> PageTest(int getPageNum, int getPageSize, List<String> list){
         PageResp<String> pageResp = new PageResp<String>();
@@ -116,10 +118,10 @@ public class Test {
     }
 
     /**
-     * 常用回显方法整合
-     * @return
+     * VoResult 使用演示 常用回显方法整合
+     * @return VoResult
      */
-    public VoResult resultTest(){
+    public static VoResult resultTest(){
         return VoResult.success();
         //return VoResult.success().add("key","value");
         //return VoResult.errorParam("报错啦！！！");
