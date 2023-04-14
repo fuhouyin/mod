@@ -1,5 +1,5 @@
 ## 个人学习的demo
-#####相关示例请查看Test.java
+##### 相关示例请查看Test.java
 
 ### 可视化大屏组件
     visualization
@@ -30,7 +30,7 @@
         fileToBase64 file转base64
         saveFile MultipartFile保存本地
         getFile 网络文件转File
-    Base64ToMultipartFile base64转MultipartFile
+        Base64ToMultipartFile base64转MultipartFile
     
 ### 分页工具
     utils.page.*,详情查看Test.PageTest();

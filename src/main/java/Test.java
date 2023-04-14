@@ -110,7 +110,7 @@ public class Test {
         PageResp<String> pageResp = new PageResp<String>();
         PageHelper pageHelper = new PageHelper(getPageNum, getPageSize);
         pageHelper.setTotalRowCount(list.size());
-        //limit(pageHelper.offset(),pageHelper.getPageSize());
+        //query.addLimit(pageHelper.offset(), pageHelper.getPageSize());
         //List<String> list = query.fetchInto(String.class);
         pageResp.setTotalCount(pageHelper.getTotalRowCount());
         pageResp.setList(list);
