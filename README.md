@@ -1,4 +1,4 @@
-![Mod-logo](img_2.jpg)
+![Mod-logo](http://www.fuhouyin.com/resource/mod_logo.jpg)
 
 ###### 个人学习demo，相关示例请查看Test.java
 
