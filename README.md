@@ -1,5 +1,6 @@
-## 个人学习的demo
-##### 相关示例请查看Test.java
+![Mod-logo](img_2.jpg)
+
+###### 个人学习demo，相关示例请查看Test.java
 
 ### 可视化大屏组件
     visualization
