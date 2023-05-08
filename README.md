@@ -1,5 +1,7 @@
-## 个人学习的demo
-##### 相关示例请查看Test.java
+![Mod-logo](http://www.fuhouyin.com/resource/mod_logo.jpg)
+
+[![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+###### 个人学习demo，相关示例请查看Test.java
 
 ### 可视化大屏组件
     visualization
