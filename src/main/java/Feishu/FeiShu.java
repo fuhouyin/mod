@@ -1,6 +1,6 @@
 package Feishu;
 
-import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSONObject;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.HashMap;
