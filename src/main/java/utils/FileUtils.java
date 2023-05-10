@@ -70,7 +70,7 @@ public class FileUtils {
      * @param input    输入流
      * @throws IOException
      */
-    private static void writeToLocal(String destination, InputStream input)
+    public static void writeToLocal(String destination, InputStream input)
             throws IOException {
         int index;
         byte[] bytes = new byte[1024];
