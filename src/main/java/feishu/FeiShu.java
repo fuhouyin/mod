@@ -1,4 +1,4 @@
-package Feishu;
+package feishu;
 
 import com.alibaba.fastjson2.JSONObject;
 import org.springframework.web.client.RestTemplate;
