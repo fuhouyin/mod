@@ -31,7 +31,7 @@ public class userSortDemo {
         List<UserSort> userSortList = new ArrayList<>();
 
         UserSort userSort = new UserSort();
-        userSort.setUserName("张三");
+        userSort.setUserName("张三1");
         userSort.setYear("2022");
         userSort.setQuarter("3");
         userSort.setScore(new BigDecimal("105"));
