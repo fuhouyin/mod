@@ -46,6 +46,12 @@
 ### redis工具
     utils.redis.RedisCacheUtils
 
+### 字符串处理工具
+    utils.CamelCAsseUtil 将下划线分割字符串转为驼峰式 （aaa_bbb_ccc => aaaBbbCcc）
+    
+### 类型转换工具
+    utils.EntityUtil 将实体类转为map <String, Object>
+
 ### 自动生成数据库所有实体类
     autoentity.pom.xml
     基于jOOQ的自动生成实体类功能，添加pom文件或者修改至自己的pom文件中，maven打包即可在对应处生成实体类
