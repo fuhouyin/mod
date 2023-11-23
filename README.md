@@ -14,8 +14,8 @@
 
 ### wx消息推送Mod
     wxMod
-        wxMod.wxRequestController  微信请求本服务接口 用于验证
-        wxMod.wxSendMsgController  微信公众号发送消息（用于消息模板类的消息推送通知）
+        wxMod.WxRequestController  微信请求本服务接口 用于验证
+        wxMod.WxSendMsgController  微信公众号发送消息（用于消息模板类的消息推送通知）
     前提：需要提前准备一个微信公众号，个人订阅号无效，可申请注册微信测试号
 
 ### 邮件发送工具

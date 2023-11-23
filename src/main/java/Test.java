@@ -5,15 +5,12 @@ import utils.*;
 import utils.page.PageHelper;
 import utils.page.PageResp;
 import utils.response.VoResult;
-import wxMod.wxSendMsgController;
+import wxMod.WxSendMsgController;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
-import java.util.Base64;
 import java.util.Date;
 import java.util.List;
 
@@ -55,7 +52,7 @@ public class Test {
      * wxMod 使用演示
      */
     public static void wxTest(){
-        wxSendMsgController.sendMsgMod("标题", "内容");
+        WxSendMsgController.sendMsgMod("标题", "内容");
     }
 
     /**

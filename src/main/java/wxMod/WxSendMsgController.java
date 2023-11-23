@@ -14,7 +14,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/wxSendMsg")
-public class wxSendMsgController {
+public class WxSendMsgController {
 
     private static final String APPID = "";
     private static final String APPSECRET="";

@@ -16,7 +16,7 @@ import java.util.Arrays;
  */
 @RestController
 @RequestMapping("/wxRequest")
-public class wxRequestController {
+public class WxRequestController {
 
     /**微信请求本服务接口 用于验证*/
     @GetMapping("/check")
