@@ -24,20 +24,18 @@ import java.security.*;
 import java.security.spec.ECGenParameterSpec;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
-import java.util.UUID;
 
 
 public class SM2Util {
-    private static Logger logger = LoggerFactory.getLogger(SM2Util.class.getSimpleName());
+    private static final Logger logger = LoggerFactory.getLogger(SM2Util.class.getSimpleName());
     //ECC 曲线 SM2命名曲线
     private final static String NAME_CURVE = "sm2p256v1";
     private final static ECGenParameterSpec SM2_SPEC = new ECGenParameterSpec(NAME_CURVE);
 
     //椭圆曲线ECParameters ASN.1 结构
-    private static X9ECParameters x9ECParameters = GMNamedCurves.getByName(NAME_CURVE);
+    private static final X9ECParameters x9ECParameters = GMNamedCurves.getByName(NAME_CURVE);
     //椭圆曲线公钥或私钥的基本域参数。
-    private static ECParameterSpec ecDomainParameters = new ECParameterSpec(x9ECParameters.getCurve(), x9ECParameters.getG(), x9ECParameters.getN());
+    private static final ECParameterSpec ecDomainParameters = new ECParameterSpec(x9ECParameters.getCurve(), x9ECParameters.getG(), x9ECParameters.getN());
 
     /**
      * 生成密钥
@@ -52,7 +50,7 @@ public class SM2Util {
                 byte[] publicKeyByte = ((BCECPublicKey) publicKey).getQ().getEncoded(false);
                 logger.info("publicKey is : " + Hex.toHexString(publicKeyByte));
                 logger.info("publicKey byte size : " + publicKeyByte.length);
-                if (null != publicKeyByte && publicKeyByte.length > 0) {
+                if (publicKeyByte.length > 0) {
                     resultMap.put("PublicKey", Hex.toHexString(publicKeyByte));
                 }
             }
@@ -62,7 +60,7 @@ public class SM2Util {
                 byte[] privateKeyByte = ((BCECPrivateKey) privateKey).getD().toByteArray();
                 logger.info("privateKey is : " + Hex.toHexString(privateKeyByte));
                 logger.info("privateKey byte size : " + privateKeyByte.length);
-                if (null != privateKeyByte && privateKeyByte.length > 0)
+                if (privateKeyByte.length > 0)
                     resultMap.put("PrivateKey", Hex.toHexString(privateKeyByte));
             }
         }
@@ -71,11 +69,9 @@ public class SM2Util {
 
     /**
      * 初始化密钥
-     *
-     * @return
      */
     private static KeyPair initECKeyPair() {
-        KeyPairGenerator kpg = null;
+        KeyPairGenerator kpg;
         try {
             kpg = KeyPairGenerator.getInstance("EC", new BouncyCastleProvider());
             kpg.initialize(SM2_SPEC, new SecureRandom());
@@ -88,10 +84,6 @@ public class SM2Util {
 
     /**
      * 内容加密
-     *
-     * @param publicKeyByte
-     * @param data
-     * @return
      */
     public static byte[] encrypt(byte[] publicKeyByte, byte[] data) {
         //通过公钥对象获取公钥的基本与参数
@@ -113,9 +105,6 @@ public class SM2Util {
 
     /**
      * 内容公钥加密 返回字符串
-     * @param publicKeyHex
-     * @param data
-     * @return
      */
     public static String encrypt(String publicKeyHex, String data) {
         byte[] publicKeyByte = Hex.decode(publicKeyHex);
@@ -126,8 +115,6 @@ public class SM2Util {
 
     /**
      * 私钥解密
-     *
-     * @return
      */
     public static byte[] decrypt(byte[] privateKeyByte, byte[] data) {
         //通过私钥对象获取私钥的基本域参数。
@@ -146,9 +133,8 @@ public class SM2Util {
 
         try {
             //通过解密引擎对密文字节串进行解密
-            byte[] arrayOfBytes = sm2Engine.processBlock(data, 0, data.length);
             //将解密后的字节串转换为utf8字符编码的字符串（需要与明文加密时字符串转换成字节串所指定的字符编码保持一致）
-            return arrayOfBytes;
+            return sm2Engine.processBlock(data, 0, data.length);
         } catch (Exception e) {
             logger.error("解密错误：" + e.getMessage());
             return null;
@@ -158,9 +144,6 @@ public class SM2Util {
 
     /**
      * 私钥解密 返回字符串
-     * @param privateKeyHex
-     * @param data
-     * @return
      */
     public static String decrypt(String privateKeyHex, String data) {
         byte[] privateKeyByte = Hex.decode(privateKeyHex);
@@ -171,17 +154,13 @@ public class SM2Util {
 
     /**
      * 签名
-     * @param privateKeyHex
-     * @param message
-     * @return
      */
     public static byte[] sign(String privateKeyHex, byte[] message) {
         try {
             Signature signature = Signature.getInstance(GMObjectIdentifiers.sm2sign_with_sm3.toString(), new BouncyCastleProvider());
             signature.initSign(getBCECPrivateKeyByPrivateKeyHex(privateKeyHex));
             signature.update(message);
-            byte[] bytes = signature.sign();
-            return bytes;
+            return signature.sign();
         } catch (Exception e) {
             logger.error("签名错误：" + e.getMessage());
             return null;
@@ -200,14 +179,8 @@ public class SM2Util {
 
     /**
      * 验签
-     * @param publicKeyHex
-     * @param signedMsg
-     * @param originMsg
-     * @return
-     * @throws NoSuchAlgorithmException
-     * @throws SignatureException
      */
-    public static boolean verifySign(String publicKeyHex, byte[] signedMsg, byte[] originMsg) throws NoSuchAlgorithmException, SignatureException {
+    public static boolean verifySign(String publicKeyHex, byte[] signedMsg, byte[] originMsg) {
         try {
             Signature signature = Signature.getInstance(GMObjectIdentifiers.sm2sign_with_sm3.toString(), new BouncyCastleProvider());
             signature.initVerify(getECPublicKeyByPublicKeyHex(publicKeyHex));
@@ -223,7 +196,7 @@ public class SM2Util {
     /**
      * 公钥验签 返回布尔值
      */
-    public static boolean verifySign(String publicKeyHex, String signedMsg, String originMsg) throws NoSuchAlgorithmException, SignatureException {
+    public static boolean verifySign(String publicKeyHex, String signedMsg, String originMsg) {
         byte[] signedMsgByte = Hex.decode(signedMsg);
         byte[] originMsgByte = originMsg.getBytes(StandardCharsets.UTF_8);
         return verifySign(publicKeyHex, signedMsgByte, originMsgByte);
@@ -231,9 +204,6 @@ public class SM2Util {
 
     /**
      * 根据16进制内容生成公钥
-     *
-     * @param pubKeyHex 16进制公钥
-     * @return
      */
     public static BCECPublicKey getECPublicKeyByPublicKeyHex(String pubKeyHex) {
         //截取64字节有效的SM2公钥（如果公钥首个字节为0x04）
@@ -269,7 +239,7 @@ public class SM2Util {
     }
 
 
-    public static void main(String[] args) throws NoSuchAlgorithmException, SignatureException {
+    public static void main(String[] args) {
         // 生成密钥对
         Map<String, String> map = generateKey();
 
