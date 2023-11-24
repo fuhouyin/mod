@@ -273,7 +273,11 @@ public class SM2Util {
         // 生成密钥对
         Map<String, String> map = generateKey();
 
-        //密钥对
+        /*
+         * 密钥对
+         * 通常加解密 和 签名验签 所用的公私钥不是一套
+         * 公钥加密 私钥解密 私钥签名 公钥验签
+         */
         String signPublicKey = map.get("PublicKey");
         String signPrivateKey = map.get("PrivateKey");
 
