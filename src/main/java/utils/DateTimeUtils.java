@@ -10,17 +10,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 
-/**
- * @author fuhouyin
- */
+
 public class DateTimeUtils {
 
     /**
      * 计算两个日期之间相差的天数
      * @param smdate
      * @param bdate
-     * @return
-     * @throws ParseException
      */
     public static int daysBetween(Date smdate, Date bdate) throws ParseException {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
@@ -41,7 +37,6 @@ public class DateTimeUtils {
      * 超期 不包括今天
      * @param endDate 截至时间
      * @param finishDate 完成时间
-     * @return
      */
     public static TimeOverdueAdventPojo overdueAdvent(Date endDate, Date finishDate) throws ParseException {
 

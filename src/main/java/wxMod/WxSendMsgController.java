@@ -9,9 +9,6 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author fuhouyin
- */
 @RestController
 @RequestMapping("/wxSendMsg")
 public class WxSendMsgController {

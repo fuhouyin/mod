@@ -56,7 +56,6 @@ public class FileUtils {
      * 保存文件
      * @param path 文件地址
      * @param multipartFile 文件
-     * @throws Exception
      */
     public static void saveFile(String path, MultipartFile multipartFile) throws Exception {
         File dest = new File(path);
@@ -68,7 +67,6 @@ public class FileUtils {
      * 将InputStream写入本地文件
      * @param destination 写入本地目录 指定到文件名
      * @param input    输入流
-     * @throws IOException
      */
     public static void writeToLocal(String destination, InputStream input)
             throws IOException {
@@ -86,8 +84,6 @@ public class FileUtils {
     /**
      * 网络文件转File
      * @param url
-     * @return File
-     * @throws Exception
      */
     public static File getFile(String url) throws Exception {
         //对本地文件命名

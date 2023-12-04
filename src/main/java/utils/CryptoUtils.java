@@ -11,10 +11,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.NoSuchProviderException;
 import java.security.Security;
 
-/**
- * @author fuhouyin
- * @time 2023/2/1 11:53
- */
 public class CryptoUtils {
 
     static {

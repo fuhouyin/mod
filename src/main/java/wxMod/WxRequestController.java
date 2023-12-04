@@ -11,9 +11,6 @@ import java.io.PrintWriter;
 import java.security.MessageDigest;
 import java.util.Arrays;
 
-/**
- * @author fuhouyin
- */
 @RestController
 @RequestMapping("/wxRequest")
 public class WxRequestController {
