@@ -1,3 +1,4 @@
+import lombok.Data;
 import mail.Mail;
 import org.apache.commons.io.IOUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,16 +18,11 @@ import java.util.List;
 public class Test {
 
     public static void main(String[] args) throws Exception{
-        daysBetweenTest();
-        overdueAdventTest();
-        wxTest();
-        mailTest();
-        fileEncDecTest();
-        fileDownTest();
-        resultTest();
+        setObjectValueByField();
     }
 
     /**
+     * 计算两个日期之间相差的天数
      * DateTimeUtils.daysBetween 使用演示
      */
     public static void daysBetweenTest() throws Exception {
@@ -37,6 +33,7 @@ public class Test {
     }
 
     /**
+     * 计算临期/超期天数
      * DateTimeUtils.overdueAdvent 使用演示
      */
     public static void overdueAdventTest() throws Exception {
@@ -49,6 +46,7 @@ public class Test {
     }
 
     /**
+     * 发送公众号模板消息
      * wxMod 使用演示
      */
     public static void wxTest(){
@@ -56,6 +54,7 @@ public class Test {
     }
 
     /**
+     * 邮件发送
      * mail 使用演示
      */
     public static void mailTest() throws Exception {
@@ -63,6 +62,7 @@ public class Test {
     }
 
     /**
+     * AES/CBC/PKCS7Padding 加解密
      * CryptoUtils 使用演示 文件加密/解密
      */
     public static void fileEncDecTest() throws Exception{
@@ -87,7 +87,8 @@ public class Test {
     }
 
     /**
-     * FileUtils.getFile 使用演示 获取网络文件并下载
+     * 获取网络文件并下载
+     * FileUtils.getFile 使用演示
      */
     public static void fileDownTest() throws Exception{
         File file = FileUtils.getFile("https://www.baidu.com/a.jpg");
@@ -122,5 +123,22 @@ public class Test {
         return VoResult.success();
         //return VoResult.success().add("key","value");
         //return VoResult.errorParam("报错啦！！！");
+    }
+
+    /**
+     *根据属性，拿到set方法，并把值set到对象中
+     */
+    public static void setObjectValueByField() throws NoSuchFieldException {
+
+        String field = "name";
+        String value = "李雷";
+        User user = new User();
+        MethodGetAndSet.setValue(user,user.getClass(),field,User.class.getDeclaredField(field).getType(),value);
+        System.out.println(user);
+    }
+    @Data
+    public static class User{
+        private String name;
+        private String age;
     }
 }

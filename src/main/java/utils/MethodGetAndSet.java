@@ -3,15 +3,10 @@ package utils;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 
-/**
- * @author fuhouyin
- * @time 2023/2/1 15:10
- * 根据实体类属性获取getAndSet方法
- */
 public class MethodGetAndSet {
 
     /**根据属性，获取get方法*/
-    private Object getGetMethod(Object ob , String name)throws Exception{
+    public static Object getGetMethod(Object ob , String name)throws Exception{
         Method[] m = ob.getClass().getMethods();
         for(int i = 0;i < m.length;i++){
             if(("get"+name).toLowerCase().equals(m[i].getName().toLowerCase())){
@@ -22,7 +17,7 @@ public class MethodGetAndSet {
     }
 
     /**根据属性，拿到set方法，并把值set到对象中*/
-    private void setValue(Object obj,Class<?> clazz,String filedName,Class<?> typeClass,Object value){
+    public static void setValue(Object obj, Class<?> clazz, String filedName, Class<?> typeClass, Object value){
         filedName = removeLine(filedName);
         String methodName = "set" + filedName.substring(0,1).toUpperCase()+filedName.substring(1);
         try{
@@ -34,7 +29,7 @@ public class MethodGetAndSet {
     }
 
     /**通过class类型获取获取对应类型的值*/
-    private Object getClassTypeValue(Class<?> typeClass, Object value){
+    public static Object getClassTypeValue(Class<?> typeClass, Object value){
         if(typeClass == int.class  || value instanceof Integer){
             if(null == value){
                 return 0;
@@ -81,7 +76,7 @@ public class MethodGetAndSet {
     }
 
     /**处理字符串  如：  abc_dex ---> abcDex*/
-    private String removeLine(String str){
+    public static String removeLine(String str){
         if(null != str && str.contains("_")){
             int i = str.indexOf("_");
             char ch = str.charAt(i+1);

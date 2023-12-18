@@ -15,8 +15,8 @@ public class DateTimeUtils {
 
     /**
      * 计算两个日期之间相差的天数
-     * @param smdate
-     * @param bdate
+     * @param smdate 开始时间
+     * @param bdate 结束时间
      */
     public static int daysBetween(Date smdate, Date bdate) throws ParseException {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");

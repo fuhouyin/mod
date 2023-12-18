@@ -21,7 +21,6 @@ public class Mail {
      * @param toMail 收件地址
      * @param strTitle 标题
      * @param strContent 内容
-     * @throws Exception
      */
     public static void sendMail(String mailName,String mailPwd,String toMail,String strTitle,String strContent) throws Exception{
 

@@ -2,11 +2,6 @@ package utils;
 
 import java.util.List;
 
-/**
- * @author fuhouyin
- * @time 2023/2/1 15:07
- * 手动分页，待测试
- */
 public class HandlePage {
 
     /**分页  start = (page - 1) * size, end = page * size*/

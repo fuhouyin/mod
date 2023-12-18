@@ -9,10 +9,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Base64;
 
-/**
- * @author fuhouyin
- * @time 2023/2/1 11:55
- */
 public class FileUtils {
 
     /**
