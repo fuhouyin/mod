@@ -13,9 +13,9 @@
         overdueAdvent 计算临期/超期天数
 
 ### 消息推送类
-    1 wxMod 微信公众号模板消息推送
-        wxMod.WxRequestController  微信请求本服务接口 用于验证
-        wxMod.WxSendMsgController  微信公众号发送消息（用于消息模板类的消息推送通知）
+    1 wx 微信公众号模板消息推送
+        wx.WxRequestController  微信请求本服务接口 用于验证
+        wx.WxSendMsgController  微信公众号发送消息（用于消息模板类的消息推送通知）
         前提：需要提前准备一个微信公众号，个人订阅号无效，可申请注册微信测试号
     
     2 mail 邮件发送工具。由于依赖停止维护，请谨慎使用

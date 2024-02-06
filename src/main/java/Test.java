@@ -6,7 +6,7 @@ import utils.*;
 import utils.page.PageHelper;
 import utils.page.PageResp;
 import utils.response.VoResult;
-import wxMod.WxSendMsgController;
+import wx.WxSendMsgController;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -43,22 +43,6 @@ public class Test {
 
         DateTimeUtils.TimeOverdueAdventPojo timeOverdueAdventPojo = DateTimeUtils.overdueAdvent(endTime,finishTime);
         System.out.println(timeOverdueAdventPojo);
-    }
-
-    /**
-     * 发送公众号模板消息
-     * wxMod 使用演示
-     */
-    public static void wxTest(){
-        WxSendMsgController.sendMsgMod("标题", "内容");
-    }
-
-    /**
-     * 邮件发送
-     * mail 使用演示
-     */
-    public static void mailTest() throws Exception {
-        Mail.sendMail("发件地址","密钥","收件地址","标题", "内容");
     }
 
     /**

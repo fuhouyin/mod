@@ -1,4 +1,4 @@
-package wxMod;
+package wx;
 
 import com.alibaba.fastjson2.JSONObject;
 import org.springframework.web.bind.annotation.PostMapping;

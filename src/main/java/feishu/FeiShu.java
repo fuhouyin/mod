@@ -15,12 +15,6 @@ public class FeiShu {
 
     private static final RestTemplate restTemplate = new RestTemplate();
 
-    public static void main(String[] args) {
-
-        //cardMsg("飞书机器人发送地址","测试标题", "测试内容");
-        //cardMsg("飞书机器人发送地址","测试标题", "测试内容", "click me :兔子:", "http://www.fuhouyin.com");
-    }
-
     /**
      * 卡片消息-带按钮
      * @param hearTitle 标题
