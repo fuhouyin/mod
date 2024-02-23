@@ -1,12 +1,10 @@
 import lombok.Data;
-import mail.Mail;
 import org.apache.commons.io.IOUtils;
 import org.springframework.web.multipart.MultipartFile;
 import utils.*;
 import utils.page.PageHelper;
 import utils.page.PageResp;
 import utils.response.VoResult;
-import wx.WxSendMsgController;
 
 import java.io.File;
 import java.io.FileInputStream;
