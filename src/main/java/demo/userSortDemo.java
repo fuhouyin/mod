@@ -17,6 +17,12 @@ public class userSortDemo {
     public static void main(String[] args) {
         List<UserSort> userSorts = users();
         Map<String, List<UserSort>> userList = userSorts.stream().filter(e->e.getYearQuarter()!=null).collect(Collectors.groupingBy(UserSort::getYearQuarter));
+        //避免多次排序：对于每个分组内的用户列表，都在循环中进行了排序操作。如果数据量较大，这将影响性能。可以考虑在收集阶段就完成排序
+        //Map<String, List<UserSort>> userList = userSorts.stream().filter(e -> e.getYearQuarter() != null).sorted(Comparator.comparing(UserSort::getScore).reversed()).collect(Collectors.groupingBy(UserSort::getYearQuarter, Collectors.toList()));
+
+        //使用并行流提高性能：如果用户数据规模很大，并且排序和分组操作可以并行执行，可以尝试使用并行流以提高处理速度：
+        //Map<String, List<UserSort>> userList = userSorts.parallelStream().filter(e -> e.getYearQuarter() != null).sorted(Comparator.comparing(UserSort::getScore).reversed()).collect(Collectors.groupingByConcurrent(UserSort::getYearQuarter));
+
         for (String key : userList.keySet()){
             List<UserSort> usersses = userList.get(key);
             usersses.sort(Comparator.comparing(UserSort::getScore).reversed());
@@ -25,6 +31,17 @@ public class userSortDemo {
             }
             System.out.println(usersses);
         }
+
+        //合并设置排名和打印输出：可以简化内部循环，直接在排序后输出带有排名信息的用户列表，减少中间变量的使用
+        /*for (Map.Entry<String, List<UserSort>> entry : userList.entrySet()) {
+            int rank = 1;
+            for (UserSort user : entry.getValue().stream()
+                    .sorted(Comparator.comparing(UserSort::getScore).reversed())
+                    .peek(user -> user.setSort(rank++))
+                    .toList()) {
+                System.out.println(user);
+            }
+        }*/
     }
 
     private static List<UserSort> users(){
