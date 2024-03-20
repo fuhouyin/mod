@@ -39,3 +39,8 @@
         System.out.println("value= " + v);
     }
 ```
+```java
+    //第五种
+    System.out.println("通过lamda表达式遍历key和value：");
+    map.forEach((k, v) -> System.out.println("key = " + k + ", value = " + v));
+```
