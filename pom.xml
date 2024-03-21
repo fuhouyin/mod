@@ -55,6 +55,12 @@
             <version>2.11.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>33.0.0-jre</version>
+        </dependency>
+
         <!--邮件依赖 https://javaee.github.io/javamail/#Development_Releases-->
         <dependency>
             <groupId>com.sun.mail</groupId>
