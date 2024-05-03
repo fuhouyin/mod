@@ -68,10 +68,4 @@
 ### 自动生成数据库所有实体类
     autoentity.pom.xml
         基于jOOQ的自动生成实体类功能，添加pom文件或者修改至自己的pom文件中，maven打包即可在对应处生成实体类
-        需要在<build>内配置数据库信息 以及生成文件所在的位置信息 
-
-## 鸣谢
-
-感谢 [JetBrains](https://www.jetbrains.com/?from=real-url) 提供的 free JetBrains Open Source license
-
-[![JetBrains-logo](https://i.loli.net/2020/10/03/E4h5FZmSfnGIgap.png)](https://www.jetbrains.com/?from=real-url)
+        需要在<build>内配置数据库信息 以及生成文件所在的位置信息
