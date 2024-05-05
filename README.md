@@ -21,6 +21,34 @@
     2 utils.msgPush.mail 邮件发送工具。由于依赖停止维护，请谨慎使用
 
     3 FeiShu 飞书模板消息推送webhook，需要建群邀请自定义机器人
+### 微信工具
+
+    位置：src/main/java/wx/
+    微信验证：
+        WxRequestController.check(HttpServletRequest request, HttpServletResponse response)
+    微信公众号消息推送：
+        WxSendMsgController.sendMsgMod()
+    微信获取关注用户openId：
+        WxSendMsgController.getAccessToken()
+
+###### 注意微信公众号消息推送需要企业号以上才可以，测试可以去微信测试公众号体验。
+### 飞书工具
+
+    位置：src/main/java/utils.msgPush.feishu/
+    
+    卡片消息-带按钮：
+        FeiShu.cardMsg(String url,String hearTitle,String content,String actionsTitle,String actionsUrl)
+    使用示例：
+        cardMsg("飞书机器人发送地址","测试标题", "测试内容", "click me :兔子:", "http://www.fuhouyin.com");
+    
+
+    卡片消息
+        FeiShu.cardMsg(String url,String hearTitle,String content)
+    使用示例：
+        cardMsg("飞书机器人发送地址","测试标题", "测试内容");
+
+
+###### 需要飞书自定义机器人，‘飞书机器人发送地址’即为webhook链接
 
 ### 加密工具
     1 utils.CryptoUtils (AES/CBC/PKCS7Padding 加解密)
@@ -33,6 +61,44 @@
         decrypt 解密
         sign 签名
         verifySign 验签
+### 国密2加解密工具
+
+    位置：src/main/java/utils/SM2Util.java
+    
+    生成密钥：
+        generateKey()
+    内容公钥加密：
+        encrypt(String publicKeyHex, String data)
+    私钥解密：
+        decrypt(String privateKeyHex, String data)
+    私钥生成签名：
+        sign(String privateKeyHex, String message)
+    公钥验签：
+        verifySign(String publicKeyHex, String signedMsg, String originMsg)
+    
+    使用示例：
+    Map<String, String> map = generateKey();
+    String signPublicKey = map.get("PublicKey");
+    String signPrivateKey = map.get("PrivateKey");
+    String info = "Test123Test123Test1234567";
+    
+    //加密
+    String encodeInfo = encrypt(signPublicKey,info);
+    logger.info("加密内容"+encodeInfo);
+    
+    //解密
+    String decodeInfo = decrypt(signPrivateKey,encodeInfo);
+    logger.info("解密内容"+decodeInfo);
+    
+    //签名
+    String signedInfo = sign(signPrivateKey,encodeInfo);
+    logger.info("签名：" + signedInfo);
+    
+    //验签
+    boolean isSigned = verifySign(signPublicKey,signedInfo,encodeInfo);
+    logger.info("验签：" + isSigned);
+
+###### 公私密钥，通常是生成两套交叉使用，以达到安全效果。
 
 ### 文件工具
     utils.FileUtils 
@@ -64,6 +130,18 @@
     utils.EntityUtil 
         entityToMap  将实体类转为map <String, Object>
         getMultiValueMap  解析json字符串为MultiValueMap(传值为json字符串)
+### 实体类工具
+
+    位置：src/main/java/utils/EntityUtil.java
+    
+    实体类转Map<String,Object>：
+        entityToMap(Object entity)
+    获取实体类中所有不为空的字段名：
+        findNotNullFields(Object obj)
+    根据字段名获取值：
+        getFieldValue(String fieldName, Object obj)
+    解析json字符串为MultiValueMap：
+        getMultiValueMap(String json)
 
 ### 自动生成数据库所有实体类
     autoentity.pom.xml
